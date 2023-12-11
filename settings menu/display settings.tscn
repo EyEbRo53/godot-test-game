@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh60lwlb3n1fh"]
+
+[sub_resource type="GDScript" id="GDScript_1wbum"]
+script/source = "extends Node2D
+
+@onready var ratio_options = $\"GridContainer/list of aspect ratios\"
+@onready var resolution_options = $\"GridContainer/list of resolutions\"
+@onready var text_font_options = $\"GridContainer/change font size\"
+
+
+func _ready():
+	ratio_options.add_item('4:3', 0)
+	ratio_options.add_item('8:5', 1)
+	ratio_options.add_item('16:9', 2)
+	ratio_options.add_item('16:10', 3)
+	resolution_options.add_item('640x480', 0)
+	resolution_options.add_item('800x500', 0)
+	resolution_options.add_item('1280x720', 0)
+	resolution_options.add_item('1600x1000', 0)
+	text_font_options.add_item('30', 0)
+	text_font_options.add_item('40', 0)
+	text_font_options.add_item('50', 0)
+"
+
+[sub_resource type="SystemFont" id="SystemFont_xd7o1"]
+font_names = PackedStringArray("Return of Ganon")
+subpixel_positioning = 0
+
+[node name="display_settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 559.0
+offset_top = 377.0
+offset_right = 559.0
+offset_bottom = 377.0
+
+[node name="Node2D" type="Node2D" parent="."]
+script = SubResource("GDScript_1wbum")
+
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -179.5
+offset_right = 211.5
+offset_bottom = 179.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="aspect ratio" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "Aspect Ratio: "
+
+[node name="list of aspect ratios" type="OptionButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="resolution" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "Resolution: "
+
+[node name="list of resolutions" type="OptionButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="colorblindmode" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "Colorblind mode:"
+
+[node name="colorblind check" type="CheckButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="greyscale mode" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "greyscale mode:"
+
+[node name="greyscale check" type="CheckButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="brightness" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "Brightness:"
+
+[node name="adjust brightness" type="HSlider" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(204, 0)
+layout_mode = 2
+
+[node name="text font size" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = SubResource("SystemFont_xd7o1")
+theme_override_font_sizes/font_size = 40
+text = "Test font size:"
+
+[node name="change font size" type="OptionButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2

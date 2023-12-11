@@ -1,0 +1,377 @@
+[gd_scene load_steps=17 format=3 uid="uid://b5h00m1j85men"]
+
+[ext_resource type="PackedScene" uid="uid://dn8fx40r3afj7" path="res://settings menu/audio settings.tscn" id="1_6gt50"]
+[ext_resource type="PackedScene" uid="uid://dh60lwlb3n1fh" path="res://settings menu/display settings.tscn" id="2_g2imw"]
+[ext_resource type="PackedScene" uid="uid://cvu44h1s5lkwc" path="res://settings menu/controls.tscn" id="3_n1awh"]
+[ext_resource type="PackedScene" uid="uid://dgf8awt6lckt5" path="res://settings menu/langauge_settings.tscn" id="4_a2pwe"]
+[ext_resource type="PackedScene" uid="uid://c6p2tlasxu5sm" path="res://settings menu/gameplay_options.tscn" id="5_k5typ"]
+
+[sub_resource type="GDScript" id="GDScript_6hqh4"]
+script/source = "extends Control
+
+
+@onready var audio = $Popup/audio_settings
+@onready var display = $Popup/display_settings
+@onready var control = $Popup/control_options
+@onready var language = $Popup/langauge
+@onready var game_options = $Popup/gameplay_options
+
+@onready var previous_btn_pressed = $dummy
+func show_and_hide(first, second):
+	if (first != second):
+		first.show()
+		second.hide()
+	
+
+func _ready():
+	#hide all popups
+	set_process(true)#for the esc event
+	audio.hide()
+	display.hide()
+	control.hide()
+	language.hide()
+	game_options.hide()
+	
+
+
+
+func _process(delta):
+	if Input.is_action_pressed(\"ui_cancel\"):
+		get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+
+
+func _on_display_pressed():
+	Sfx.play_click()
+	show_and_hide(display, previous_btn_pressed)
+	previous_btn_pressed = display
+
+
+func _on_audio_pressed():
+	Sfx.play_click()
+	show_and_hide(audio, previous_btn_pressed)
+	previous_btn_pressed = audio
+
+
+
+func _on_control_pressed():
+	Sfx.play_click()
+	show_and_hide(control, previous_btn_pressed)
+	previous_btn_pressed = control
+
+
+func _on_language_pressed():
+	Sfx.play_click()
+	show_and_hide(language, previous_btn_pressed)
+	previous_btn_pressed = language
+
+
+func _on_game_options_pressed():
+	Sfx.play_click()
+	show_and_hide(game_options, previous_btn_pressed)
+	previous_btn_pressed = game_options
+"
+
+[sub_resource type="SystemFont" id="SystemFont_mpt5s"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3d5fq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arhy3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pu3bm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_to6qa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2t2a"]
+
+[sub_resource type="GDScript" id="GDScript_0okyg"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+
+func _on_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[sub_resource type="SystemFont" id="SystemFont_2cbtn"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8fgm"]
+
+[sub_resource type="GDScript" id="GDScript_gpasr"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+"
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6hqh4")
+
+[node name="go_back" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 31.0
+offset_right = 126.0
+offset_bottom = 114.0
+theme_override_fonts/font = SubResource("SystemFont_mpt5s")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3d5fq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_arhy3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pu3bm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_to6qa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k2t2a")
+text = "<-"
+script = SubResource("GDScript_0okyg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -345.5
+offset_right = 400.0
+offset_bottom = 345.5
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="audio" type="Button" parent="HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_2cbtn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
+text = "Audio"
+script = SubResource("GDScript_gpasr")
+
+[node name="control" type="Button" parent="HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_2cbtn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
+text = "Control"
+script = SubResource("GDScript_gpasr")
+
+[node name="display" type="Button" parent="HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_2cbtn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
+text = "Display"
+script = SubResource("GDScript_gpasr")
+
+[node name="language" type="Button" parent="HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_2cbtn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
+text = "Language"
+script = SubResource("GDScript_gpasr")
+
+[node name="game options" type="Button" parent="HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_2cbtn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l8fgm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
+text = "Game Options"
+script = SubResource("GDScript_gpasr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_right = 226.0
+offset_bottom = 207.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="audio_settings" parent="Popup" instance=ExtResource("1_6gt50")]
+visible = false
+layout_mode = 1
+offset_left = -281.0
+offset_top = -283.0
+offset_right = 281.0
+offset_bottom = 283.0
+
+[node name="display_settings" parent="Popup" instance=ExtResource("2_g2imw")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="control_options" parent="Popup" instance=ExtResource("3_n1awh")]
+visible = false
+layout_mode = 1
+
+[node name="langauge" parent="Popup" instance=ExtResource("4_a2pwe")]
+visible = false
+layout_mode = 1
+
+[node name="gameplay_options" parent="Popup" instance=ExtResource("5_k5typ")]
+layout_mode = 1
+
+[node name="dummy" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_entered" from="go_back" to="go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="go_back" to="go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="go_back" to="go_back" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/audio" to="HBoxContainer/VBoxContainer/audio" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/audio" to="HBoxContainer/VBoxContainer/audio" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/audio" to="." method="_on_audio_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/control" to="HBoxContainer/VBoxContainer/control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/control" to="HBoxContainer/VBoxContainer/control" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/control" to="." method="_on_control_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/display" to="HBoxContainer/VBoxContainer/display" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/display" to="HBoxContainer/VBoxContainer/display" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/display" to="." method="_on_display_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/language" to="HBoxContainer/VBoxContainer/language" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/language" to="HBoxContainer/VBoxContainer/language" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/language" to="." method="_on_language_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/game options" to="HBoxContainer/VBoxContainer/game options" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/game options" to="HBoxContainer/VBoxContainer/game options" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/game options" to="." method="_on_game_options_pressed"]

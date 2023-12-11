@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvu44h1s5lkwc"]
+
+[ext_resource type="PackedScene" uid="uid://v0j2b3v3b3b" path="res://settings menu/action_btn.tscn" id="1_v26cr"]
+
+[sub_resource type="SystemFont" id="SystemFont_rp7km"]
+font_names = PackedStringArray("Return of Ganon")
+subpixel_positioning = 0
+
+[node name="control_options" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hbox container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="hbox container"]
+layout_mode = 2
+
+[node name="up" type="Label" parent="hbox container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rp7km")
+theme_override_font_sizes/font_size = 40
+text = "up:"
+
+[node name="down" type="Label" parent="hbox container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rp7km")
+theme_override_font_sizes/font_size = 40
+text = "down:"
+
+[node name="left" type="Label" parent="hbox container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rp7km")
+theme_override_font_sizes/font_size = 40
+text = "left:"
+
+[node name="right" type="Label" parent="hbox container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rp7km")
+theme_override_font_sizes/font_size = 40
+text = "right:"
+
+[node name="action" type="Label" parent="hbox container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rp7km")
+theme_override_font_sizes/font_size = 40
+text = "action:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="hbox container"]
+layout_mode = 2
+
+[node name="action_btn" parent="hbox container/VBoxContainer2" instance=ExtResource("1_v26cr")]
+layout_mode = 2
+action = "ui_up"
+
+[node name="action_btn2" parent="hbox container/VBoxContainer2" instance=ExtResource("1_v26cr")]
+layout_mode = 2
+action = "ui_down"
+
+[node name="action_btn3" parent="hbox container/VBoxContainer2" instance=ExtResource("1_v26cr")]
+layout_mode = 2
+action = "ui_left"
+
+[node name="action_btn4" parent="hbox container/VBoxContainer2" instance=ExtResource("1_v26cr")]
+layout_mode = 2
+action = "ui_right"
+
+[node name="action_btn5" parent="hbox container/VBoxContainer2" instance=ExtResource("1_v26cr")]
+layout_mode = 2
+action = "ui_accept"

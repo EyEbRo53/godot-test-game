@@ -1,0 +1,429 @@
+[gd_scene load_steps=14 format=3 uid="uid://cfyhwrdla7yfr"]
+
+[ext_resource type="Texture2D" uid="uid://c0wa8p3cr4c0v" path="res://textures/Game Title.png" id="1_ficnb"]
+[ext_resource type="Texture2D" uid="uid://xow4xf2vblyj" path="res://textures/WhatsApp Image 2023-11-28 at 11.21.35 PM.jpeg" id="2_4rw1c"]
+
+[sub_resource type="Shader" id="Shader_urixh"]
+code = "shader_type canvas_item;
+ 
+void fragment()
+{
+	bool greyscale_on = false;
+	if (greyscale_on){
+	    COLOR = texture(TEXTURE, UV);
+	    float lum = (COLOR.r+COLOR.g+COLOR.b)/3.0;
+	    COLOR.xyz = vec3(lum);		
+	}
+
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3etwj"]
+shader = SubResource("Shader_urixh")
+
+[sub_resource type="GDScript" id="GDScript_vmqr7"]
+script/source = "extends Control
+
+
+
+func _on_continue_pressed():
+	Sfx.play_click()
+	pass # Replace with function body.
+
+
+func _on_new_game_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://new_game/level_selection.tscn\")
+
+
+func _on_settings_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://settings menu/settings.tscn\")
+
+
+func _on_exit_pressed():
+	Sfx.play_click()
+	get_tree().quit()
+
+
+
+
+func _on_about_info_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://aboutUs/about_us.tscn\")
+
+
+func _on_feedback_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://feedback/feedback.tscn\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="SystemFont" id="SystemFont_12tfw"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ojgr"]
+
+[sub_resource type="GDScript" id="GDScript_gf34u"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+"
+
+[sub_resource type="GDScript" id="GDScript_ghj2e"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+"
+
+[sub_resource type="GDScript" id="GDScript_r5hb8"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+"
+
+[sub_resource type="GDScript" id="GDScript_8gfkk"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+"
+
+[sub_resource type="GDScript" id="GDScript_q861k"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+"
+
+[sub_resource type="GDScript" id="GDScript_e86ot"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+"
+
+[node name="Main menu" type="Control"]
+material = SubResource("ShaderMaterial_3etwj")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_vmqr7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 732.0
+offset_top = 401.0
+offset_right = 1212.0
+offset_bottom = 953.0
+pivot_offset = Vector2(115, 34)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+alignment = 1
+
+[node name="continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "continue from last save
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "Continue"
+script = SubResource("GDScript_gf34u")
+
+[node name="new_game" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "select a level
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "New Game"
+script = SubResource("GDScript_ghj2e")
+
+[node name="settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "go to settings menu
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "Settings"
+script = SubResource("GDScript_r5hb8")
+
+[node name="exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 135)
+layout_mode = 2
+tooltip_text = "exit game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "Exit
+"
+script = SubResource("GDScript_8gfkk")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 1388.0
+offset_top = 918.0
+offset_right = 1992.0
+offset_bottom = 1053.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+use_parent_material = true
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="about_info" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(200, 135)
+layout_mode = 2
+tooltip_text = "about us"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "(i)"
+script = SubResource("GDScript_q861k")
+
+[node name="feedback" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(300, 135)
+layout_mode = 2
+tooltip_text = "provide us a feedback
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_12tfw")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ojgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ojgr")
+text = "Feedback
+"
+script = SubResource("GDScript_e86ot")
+
+[node name="game_title" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(1016, 249)
+scale = Vector2(1.336, 1.336)
+texture = ExtResource("1_ficnb")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+show_behind_parent = true
+z_index = -1
+texture_filter = 6
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -91.0
+offset_right = 4.0
+offset_bottom = 770.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_4rw1c")
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="MarginContainer/HBoxContainer/VBoxContainer/continue" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="MarginContainer/HBoxContainer/VBoxContainer/continue" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/new_game" to="MarginContainer/HBoxContainer/VBoxContainer/new_game" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/new_game" to="MarginContainer/HBoxContainer/VBoxContainer/new_game" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/new_game" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/settings" to="MarginContainer/HBoxContainer/VBoxContainer/settings" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/settings" to="MarginContainer/HBoxContainer/VBoxContainer/settings" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/exit" to="MarginContainer/HBoxContainer/VBoxContainer/exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/exit" to="MarginContainer/HBoxContainer/VBoxContainer/exit" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/HBoxContainer/about_info" to="MarginContainer2/VBoxContainer/HBoxContainer/about_info" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/HBoxContainer/about_info" to="MarginContainer2/VBoxContainer/HBoxContainer/about_info" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/about_info" to="." method="_on_about_info_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/HBoxContainer/feedback" to="MarginContainer2/VBoxContainer/HBoxContainer/feedback" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/HBoxContainer/feedback" to="MarginContainer2/VBoxContainer/HBoxContainer/feedback" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/feedback" to="." method="_on_feedback_pressed"]

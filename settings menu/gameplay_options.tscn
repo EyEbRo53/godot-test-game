@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6p2tlasxu5sm"]
+
+[sub_resource type="SystemFont" id="SystemFont_0t2m3"]
+font_names = PackedStringArray("Return of Ganon")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_cv0rs"]
+font_names = PackedStringArray("Return of Ganon")
+subpixel_positioning = 0
+
+[node name="gameplay_options" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -41.0
+offset_right = 171.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="difficulty label" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0t2m3")
+theme_override_font_sizes/font_size = 40
+text = "Select difficulty:"
+
+[node name="OptionButton" type="OptionButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="tutorials label" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_cv0rs")
+theme_override_font_sizes/font_size = 40
+text = "Noob tutorials:"
+
+[node name="CheckBox" type="CheckBox" parent="Node2D/GridContainer"]
+layout_mode = 2

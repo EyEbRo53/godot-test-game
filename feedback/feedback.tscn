@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://duvlpxdjjwrit"]
+
+[ext_resource type="Script" path="res://feedback/feedback.gd" id="1_ov8tp"]
+[ext_resource type="Texture2D" uid="uid://c7ky64o1t2d4k" path="res://feedback/star_0.png" id="2_m4ico"]
+[ext_resource type="Texture2D" uid="uid://d3hk2l42b1e2f" path="res://feedback/star_1.png" id="3_n3ef3"]
+
+[sub_resource type="SystemFont" id="SystemFont_pr0jm"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lotsf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwq5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxcl6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5oqeg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyhmk"]
+
+[sub_resource type="GDScript" id="GDScript_s1fr3"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+
+func _on_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[sub_resource type="SystemFont" id="SystemFont_ho58b"]
+font_names = PackedStringArray("Return of Ganon")
+
+[node name="feedback" type="Node2D"]
+script = ExtResource("1_ov8tp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1915.0
+offset_bottom = 988.0
+
+[node name="go_back" type="Button" parent="Control"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 31.0
+offset_right = 126.0
+offset_bottom = 114.0
+theme_override_fonts/font = SubResource("SystemFont_pr0jm")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lotsf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kwq5x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sxcl6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5oqeg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nyhmk")
+text = "<-"
+script = SubResource("GDScript_s1fr3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.0
+offset_top = -104.0
+offset_right = 532.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="star1" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("2_m4ico")
+texture_pressed = ExtResource("3_n3ef3")
+
+[node name="star2" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("2_m4ico")
+texture_pressed = ExtResource("3_n3ef3")
+
+[node name="star3" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("2_m4ico")
+texture_pressed = ExtResource("3_n3ef3")
+
+[node name="star4" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("2_m4ico")
+texture_pressed = ExtResource("3_n3ef3")
+
+[node name="star5" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("2_m4ico")
+texture_pressed = ExtResource("3_n3ef3")
+
+[node name="Button" type="Button" parent="Control"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_ho58b")
+theme_override_font_sizes/font_size = 40
+text = "Submit"
+
+[connection signal="mouse_entered" from="Control/go_back" to="Control/go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/go_back" to="Control/go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/go_back" to="Control/go_back" method="_on_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/star1" to="." method="_on_star_1_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/star2" to="." method="_on_star_2_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/star3" to="." method="_on_star_3_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/star4" to="." method="_on_star_4_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/star5" to="." method="_on_star_5_pressed"]

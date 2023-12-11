@@ -1,0 +1,256 @@
+[gd_scene load_steps=13 format=3 uid="uid://co01yx5uokxev"]
+
+[ext_resource type="StyleBox" uid="uid://8ywv6tifyg07" path="res://textures/new_style_box_flat.tres" id="1_iqvg3"]
+[ext_resource type="PackedScene" uid="uid://dn8fx40r3afj7" path="res://settings menu/audio settings.tscn" id="2_8s5y3"]
+
+[sub_resource type="GDScript" id="GDScript_01ao8"]
+script/source = "extends Control
+
+
+@onready var audio = $audio_settings
+
+func show_and_hide(first, second) ->void:
+	first.show()
+	second.hide()
+
+
+
+func _on_audio_pressed():
+	show_and_hide(audio, null)
+	
+
+
+func _on_ready():
+	show_and_hide(null, audio)
+"
+
+[sub_resource type="SystemFont" id="SystemFont_0718p"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1dxd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i47w7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4tk1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ofjn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4ewp"]
+
+[sub_resource type="GDScript" id="GDScript_2y56o"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+
+func _on_pressed():
+	get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[sub_resource type="SystemFont" id="SystemFont_e3i5e"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="GDScript" id="GDScript_7h662"]
+script/source = "extends Button
+
+var audio_options : VBoxContainer
+var controls_options : VBoxContainer
+
+func _ready():
+	# This function is called when the scene is ready.
+	# Assign VBoxContainer nodes to variables
+	audio_options = $AudioOptions
+	controls_options = $ControlsOptions
+
+	# Connect the button's \"pressed\" signal to the script
+	#connect(\"pressed\",self ,\"_on_controls_pressed\")
+
+func _on_controls_pressed():
+	# This function is called when the button is pressed.
+	print(\"Button pressed!\")
+	# Toggle between containers
+	toggle_containers()
+
+func toggle_containers():
+	# Toggle visibility of VBoxContainers
+	print(\"Toggling containers!\")
+	audio_options.visible = not audio_options.visible
+	controls_options.visible = not controls_options.visible
+	# You can add additional logic here if needed
+	# For example, changing the appearance or position of the VBoxContainers
+"
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 305.0
+offset_top = 383.0
+offset_right = 305.0
+offset_bottom = 383.0
+script = SubResource("GDScript_01ao8")
+
+[node name="go_back" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 0
+offset_left = -302.0
+offset_top = -380.0
+offset_right = -173.0
+offset_bottom = -257.0
+theme_override_fonts/font = SubResource("SystemFont_0718p")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w1dxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i47w7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s4tk1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4ofjn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g4ewp")
+text = "<-"
+script = SubResource("GDScript_2y56o")
+
+[node name="settings options" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = -300.0
+offset_top = -260.0
+offset_right = 80.0
+offset_bottom = 524.0
+theme_override_constants/h_separation = -3
+theme_override_constants/v_separation = -5
+
+[node name="Audio" type="Button" parent="settings options"]
+custom_minimum_size = Vector2(380, 133)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e3i5e")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = ExtResource("1_iqvg3")
+theme_override_styles/hover = ExtResource("1_iqvg3")
+theme_override_styles/pressed = ExtResource("1_iqvg3")
+theme_override_styles/disabled = ExtResource("1_iqvg3")
+theme_override_styles/focus = ExtResource("1_iqvg3")
+toggle_mode = true
+text = "Audio
+"
+
+[node name="Controls" type="Button" parent="settings options"]
+custom_minimum_size = Vector2(380, 133)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e3i5e")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = ExtResource("1_iqvg3")
+theme_override_styles/hover = ExtResource("1_iqvg3")
+theme_override_styles/pressed = ExtResource("1_iqvg3")
+theme_override_styles/disabled = ExtResource("1_iqvg3")
+theme_override_styles/focus = ExtResource("1_iqvg3")
+toggle_mode = true
+text = "Control
+"
+script = SubResource("GDScript_7h662")
+
+[node name="Display" type="Button" parent="settings options"]
+custom_minimum_size = Vector2(380, 133)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e3i5e")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = ExtResource("1_iqvg3")
+theme_override_styles/hover = ExtResource("1_iqvg3")
+theme_override_styles/pressed = ExtResource("1_iqvg3")
+theme_override_styles/disabled = ExtResource("1_iqvg3")
+theme_override_styles/focus = ExtResource("1_iqvg3")
+text = "Display
+"
+
+[node name="Language" type="Button" parent="settings options"]
+custom_minimum_size = Vector2(380, 133)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e3i5e")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = ExtResource("1_iqvg3")
+theme_override_styles/hover = ExtResource("1_iqvg3")
+theme_override_styles/pressed = ExtResource("1_iqvg3")
+theme_override_styles/disabled = ExtResource("1_iqvg3")
+theme_override_styles/focus = ExtResource("1_iqvg3")
+text = "Language
+"
+
+[node name="Game_Options" type="Button" parent="settings options"]
+custom_minimum_size = Vector2(380, 133)
+layout_mode = 2
+tooltip_text = "load last saved game
+"
+theme_override_colors/font_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.741176, 0.360784, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.258824, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e3i5e")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = ExtResource("1_iqvg3")
+theme_override_styles/hover = ExtResource("1_iqvg3")
+theme_override_styles/pressed = ExtResource("1_iqvg3")
+theme_override_styles/disabled = ExtResource("1_iqvg3")
+theme_override_styles/focus = ExtResource("1_iqvg3")
+text = "Gameplay options"
+
+[node name="audio_settings" parent="." instance=ExtResource("2_8s5y3")]
+layout_mode = 0
+offset_left = 97.0
+offset_top = -373.0
+offset_right = 1614.0
+offset_bottom = 687.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="mouse_entered" from="go_back" to="go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="go_back" to="go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="go_back" to="go_back" method="_on_pressed"]
+[connection signal="pressed" from="settings options/Controls" to="settings options/Controls" method="_on_controls_pressed"]

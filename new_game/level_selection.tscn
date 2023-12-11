@@ -1,0 +1,371 @@
+[gd_scene load_steps=11 format=3 uid="uid://1wahi31e7a46"]
+
+[sub_resource type="GDScript" id="GDScript_1uss4"]
+script/source = "extends Control
+
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	if Input.is_action_pressed(\"ui_cancel\"):
+		get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[sub_resource type="SystemFont" id="SystemFont_poxh5"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="GDScript" id="GDScript_a6jie"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+
+func _on_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[sub_resource type="SystemFont" id="SystemFont_x7q4i"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t656x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lp12n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2tgi3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2hkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f047b"]
+
+[sub_resource type="SystemFont" id="SystemFont_sippf"]
+font_names = PackedStringArray("Return of Ganon")
+
+[node name="level_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_1uss4")
+
+[node name="level 1-4" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 330.0
+offset_right = 1699.0
+offset_bottom = 564.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level 1-4"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="level 1-4/VBoxContainer"]
+layout_mode = 2
+
+[node name="level1" type="Button" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control" type="Control" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level5" type="Button" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control2" type="Control" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level6" type="Button" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control3" type="Control" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level7" type="Button" parent="level 1-4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="level names" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 169.0
+offset_top = 565.0
+offset_right = 1760.0
+offset_bottom = 698.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level names"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="level names/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="level names/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level names/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="level names/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(226, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="level names/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="level names/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(226, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="level names/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Control" parent="level names/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="level names/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 4
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level 5-8" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 179.0
+offset_top = 700.0
+offset_right = 1703.0
+offset_bottom = 930.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level 5-8"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="level 5-8/VBoxContainer"]
+layout_mode = 2
+
+[node name="level1" type="Button" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control" type="Control" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level5" type="Button" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control2" type="Control" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level6" type="Button" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="Control3" type="Control" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="level7" type="Button" parent="level 5-8/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+script = SubResource("GDScript_a6jie")
+
+[node name="level names_1" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 176.0
+offset_top = 886.0
+offset_right = 1646.0
+offset_bottom = 1116.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level names_1"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="level names_1/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="level names_1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="level names_1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="level names_1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(226, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="level names_1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="level names_1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(226, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="level names_1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Control" parent="level names_1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="level names_1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_x7q4i")
+theme_override_font_sizes/font_size = 70
+text = "Level 4
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="node title" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 33.0
+offset_right = 1922.0
+offset_bottom = 254.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="node title"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="node title/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="go_back" type="Button" parent="node title/HBoxContainer"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_poxh5")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t656x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lp12n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2tgi3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f2hkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f047b")
+text = "<-"
+script = SubResource("GDScript_a6jie")
+
+[node name="Control" type="Control" parent="node title/HBoxContainer"]
+custom_minimum_size = Vector2(644, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="node title/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_sippf")
+theme_override_font_sizes/font_size = 70
+text = "Level Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="level 1-4/VBoxContainer/HBoxContainer/level1" to="level 1-4/VBoxContainer/HBoxContainer/level1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 1-4/VBoxContainer/HBoxContainer/level1" to="level 1-4/VBoxContainer/HBoxContainer/level1" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 1-4/VBoxContainer/HBoxContainer/level1" to="level 1-4/VBoxContainer/HBoxContainer/level1" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 1-4/VBoxContainer/HBoxContainer/level5" to="level 1-4/VBoxContainer/HBoxContainer/level5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 1-4/VBoxContainer/HBoxContainer/level5" to="level 1-4/VBoxContainer/HBoxContainer/level5" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 1-4/VBoxContainer/HBoxContainer/level5" to="level 1-4/VBoxContainer/HBoxContainer/level5" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 1-4/VBoxContainer/HBoxContainer/level6" to="level 1-4/VBoxContainer/HBoxContainer/level6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 1-4/VBoxContainer/HBoxContainer/level6" to="level 1-4/VBoxContainer/HBoxContainer/level6" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 1-4/VBoxContainer/HBoxContainer/level6" to="level 1-4/VBoxContainer/HBoxContainer/level6" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 1-4/VBoxContainer/HBoxContainer/level7" to="level 1-4/VBoxContainer/HBoxContainer/level7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 1-4/VBoxContainer/HBoxContainer/level7" to="level 1-4/VBoxContainer/HBoxContainer/level7" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 1-4/VBoxContainer/HBoxContainer/level7" to="level 1-4/VBoxContainer/HBoxContainer/level7" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 5-8/VBoxContainer/HBoxContainer/level1" to="level 5-8/VBoxContainer/HBoxContainer/level1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 5-8/VBoxContainer/HBoxContainer/level1" to="level 5-8/VBoxContainer/HBoxContainer/level1" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 5-8/VBoxContainer/HBoxContainer/level1" to="level 5-8/VBoxContainer/HBoxContainer/level1" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 5-8/VBoxContainer/HBoxContainer/level5" to="level 5-8/VBoxContainer/HBoxContainer/level5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 5-8/VBoxContainer/HBoxContainer/level5" to="level 5-8/VBoxContainer/HBoxContainer/level5" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 5-8/VBoxContainer/HBoxContainer/level5" to="level 5-8/VBoxContainer/HBoxContainer/level5" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 5-8/VBoxContainer/HBoxContainer/level6" to="level 5-8/VBoxContainer/HBoxContainer/level6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 5-8/VBoxContainer/HBoxContainer/level6" to="level 5-8/VBoxContainer/HBoxContainer/level6" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 5-8/VBoxContainer/HBoxContainer/level6" to="level 5-8/VBoxContainer/HBoxContainer/level6" method="_on_pressed"]
+[connection signal="mouse_entered" from="level 5-8/VBoxContainer/HBoxContainer/level7" to="level 5-8/VBoxContainer/HBoxContainer/level7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="level 5-8/VBoxContainer/HBoxContainer/level7" to="level 5-8/VBoxContainer/HBoxContainer/level7" method="_on_mouse_exited"]
+[connection signal="pressed" from="level 5-8/VBoxContainer/HBoxContainer/level7" to="level 5-8/VBoxContainer/HBoxContainer/level7" method="_on_pressed"]
+[connection signal="mouse_entered" from="node title/HBoxContainer/go_back" to="node title/HBoxContainer/go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="node title/HBoxContainer/go_back" to="node title/HBoxContainer/go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="node title/HBoxContainer/go_back" to="node title/HBoxContainer/go_back" method="_on_pressed"]

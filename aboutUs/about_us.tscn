@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://btjiow1ubfkyf"]
+
+[sub_resource type="Shader" id="Shader_hs2da"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	// Place fragment code here.
+	bool greyscale = false;
+	if(greyscale){
+		COLOR = texture(TEXTURE, UV);
+		float avg = (COLOR.r+COLOR.g+COLOR.b)/3.0;
+		COLOR.rgb=vec3(avg);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uu8c"]
+shader = SubResource("Shader_hs2da")
+
+[sub_resource type="SystemFont" id="SystemFont_uat0d"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0hir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mowrv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eocpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkyyg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nicqx"]
+
+[sub_resource type="GDScript" id="GDScript_ahcnh"]
+script/source = "extends Button
+
+var origional_size := scale
+var grow_size := Vector2(1.1, 1.1)
+
+
+
+func _on_mouse_entered() ->void:
+	Sfx.play_hover()
+	grow_btn(grow_size, .1)
+
+
+func _on_mouse_exited() ->void:
+	grow_btn(origional_size, .1)
+
+func grow_btn(end_size: Vector2, duration: float) ->void:
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, 'scale', end_size, duration)
+		
+
+
+func _on_pressed():
+	Sfx.play_click()
+	get_tree().change_scene_to_file(\"res://main menu/main_menu.tscn\")
+"
+
+[node name="main" type="Control"]
+material = SubResource("ShaderMaterial_5uu8c")
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+offset_right = 1924.0
+offset_bottom = 1081.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:
+This Game was developed by:"
+horizontal_alignment = 1
+
+[node name="go_back" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 83.0
+theme_override_fonts/font = SubResource("SystemFont_uat0d")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y0hir")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mowrv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eocpd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hkyyg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nicqx")
+text = "<-"
+script = SubResource("GDScript_ahcnh")
+
+[connection signal="mouse_entered" from="go_back" to="go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="go_back" to="go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="go_back" to="go_back" method="_on_pressed"]

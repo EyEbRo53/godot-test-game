@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb1u84egjfw4b"]
+
+[ext_resource type="AudioStream" uid="uid://dj0l32gd2cg0a" path="res://sounds/hover.mp3" id="1_i6pgo"]
+[ext_resource type="AudioStream" uid="uid://cwt53tb6asu03" path="res://sounds/click.mp3" id="2_fa426"]
+
+[sub_resource type="GDScript" id="GDScript_o36yg"]
+script/source = "extends Node
+
+func play_hover():
+	$button_hover.play()
+	
+func play_click():
+	$button_click.play()
+"
+
+[node name="SFX" type="Node"]
+script = SubResource("GDScript_o36yg")
+
+[node name="button_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_i6pgo")
+
+[node name="button_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fa426")
