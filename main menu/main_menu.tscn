@@ -67,7 +67,7 @@ font_names = PackedStringArray("Return of Ganon")
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -90,7 +90,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -113,7 +113,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -136,7 +136,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -159,7 +159,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -182,7 +182,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 script/source = "extends Button
 
 var origional_size := scale
-var grow_size := Vector2(1.1, 1.1)
+var grow_size := Vector2(1, 1.1)
 
 
 
@@ -209,6 +209,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.00312)
 script = SubResource("GDScript_vmqr7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -400,14 +401,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -91.0
-offset_right = 4.0
-offset_bottom = 770.0
+offset_right = 500.0
+offset_bottom = 914.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.968139, 1.00701)
 mouse_filter = 2
 texture = ExtResource("2_4rw1c")
+stretch_mode = 4
 
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="MarginContainer/HBoxContainer/VBoxContainer/continue" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="MarginContainer/HBoxContainer/VBoxContainer/continue" method="_on_mouse_exited"]

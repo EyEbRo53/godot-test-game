@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5h00m1j85men"]
+[gd_scene load_steps=19 format=3 uid="uid://b5h00m1j85men"]
 
 [ext_resource type="PackedScene" uid="uid://dn8fx40r3afj7" path="res://settings menu/audio settings.tscn" id="1_6gt50"]
 [ext_resource type="PackedScene" uid="uid://dh60lwlb3n1fh" path="res://settings menu/display settings.tscn" id="2_g2imw"]
 [ext_resource type="PackedScene" uid="uid://cvu44h1s5lkwc" path="res://settings menu/controls.tscn" id="3_n1awh"]
 [ext_resource type="PackedScene" uid="uid://dgf8awt6lckt5" path="res://settings menu/langauge_settings.tscn" id="4_a2pwe"]
 [ext_resource type="PackedScene" uid="uid://c6p2tlasxu5sm" path="res://settings menu/gameplay_options.tscn" id="5_k5typ"]
+[ext_resource type="Texture2D" uid="uid://bj84mxpjgbkqi" path="res://textures/background blurred.png" id="6_plx28"]
 
 [sub_resource type="GDScript" id="GDScript_6hqh4"]
 script/source = "extends Control
@@ -138,6 +139,9 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 		tween.tween_property(self, 'scale', end_size, duration)
 		
 "
+
+[sub_resource type="SystemFont" id="SystemFont_p7hkk"]
+font_names = PackedStringArray("Return of Ganon")
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -293,6 +297,18 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_l8fgm")
 text = "Game Options"
 script = SubResource("GDScript_gpasr")
 
+[node name="Container2" type="Container" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Container" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/Container"]
+layout_mode = 2
+color = Color(0.741176, 0.360784, 0, 1)
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -302,10 +318,17 @@ offset_left = -226.0
 offset_right = 226.0
 offset_bottom = 207.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = SubResource("SystemFont_p7hkk")
+theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="dummy" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Popup" type="Control" parent="."]
 layout_mode = 1
@@ -314,6 +337,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 6.10352e-05
+offset_right = 6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -351,11 +376,22 @@ layout_mode = 1
 [node name="gameplay_options" parent="Popup" instance=ExtResource("5_k5typ")]
 layout_mode = 1
 
-[node name="dummy" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="TextureRect" parent="."]
+show_behind_parent = true
+z_index = -1
+texture_filter = 6
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 500.0
+offset_bottom = 914.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.968139, 1.00701)
+mouse_filter = 2
+texture = ExtResource("6_plx28")
+stretch_mode = 4
 
 [connection signal="mouse_entered" from="go_back" to="go_back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="go_back" to="go_back" method="_on_mouse_exited"]
