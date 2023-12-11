@@ -41,7 +41,7 @@ func grow_btn(end_size: Vector2, duration: float) ->void:
 
 func _on_pressed():
 	Sfx.play_click()
-	get_tree().change_scene_to_file(\"res://game/game.tscn\")
+	get_tree().change_scene_to_file(\"res://game/main.tscn\")
 "
 
 [sub_resource type="SystemFont" id="SystemFont_x7q4i"]

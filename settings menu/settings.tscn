@@ -374,6 +374,7 @@ visible = false
 layout_mode = 1
 
 [node name="gameplay_options" parent="Popup" instance=ExtResource("5_k5typ")]
+visible = false
 layout_mode = 1
 
 [node name="ColorRect" type="TextureRect" parent="."]
