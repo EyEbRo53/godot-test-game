@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://s8p475o3ebqw"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_ho6n5"]
+[ext_resource type="Script" path="res://game/go_back.gd" id="2_bx5h8"]
+
+[sub_resource type="SystemFont" id="SystemFont_3ps45"]
+font_names = PackedStringArray("Return of Ganon")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjfjj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6igx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iyg2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3psqp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bkjd"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_ho6n5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 131.0
+offset_bottom = 137.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="go_back" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_3ps45")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gjfjj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g6igx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iyg2y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3psqp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3bkjd")
+text = "<-"
+script = ExtResource("2_bx5h8")
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/go_back" to="MarginContainer/HBoxContainer/go_back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/go_back" to="MarginContainer/HBoxContainer/go_back" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/go_back" to="MarginContainer/HBoxContainer/go_back" method="_on_pressed"]
