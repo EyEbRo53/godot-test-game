@@ -1,2 +1,2 @@
 # godot-test-game
-a experiment game in godot engine
+an experiment game in godot engine
